@@ -6,7 +6,36 @@
         "online": "http://www.ioxhop.com/"
       }, 
       "websiteURL": "https://github.com/maxpromer/arino", 
-      "platforms": [], 
+      "platforms": [
+	    {
+          "name": "",
+          "architecture": "avr",
+          "version": "0.1",
+          "category": "avr",
+          "help": {
+            "online": ""
+          },
+          "url": "https://raw.githubusercontent.com/maxpromer/arino/master/arduino/stable-v0.1/avr-ota-v0.1.zip",
+          "archiveFileName": "avr-ota-v0.1.zip",
+          "checksum": "SHA-256:d2ec7cd4708ce0e9cf0971c0ebff87c6c01cca8ba94f2c1b5cccbc92db6c0daa",
+          "size": "3878",
+          "boards": [
+            {"name": "Pro Mini 3.3V 8MHz"}
+          ],
+          "toolsDependencies": [
+            {
+              "packager": "arduino",
+              "name": "avr-gcc",
+              "version": "4.8.1-arduino5"
+            },
+            {
+              "packager": "arino",
+              "name": "arino",
+              "version": "v0.1"
+            }
+          ]
+        }
+	  ], 
       "tools": [
         {
           "version": "0.1", 
