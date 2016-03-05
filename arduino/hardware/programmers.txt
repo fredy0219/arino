@@ -1,0 +1,5 @@
+arino.name=Arino OTA Upload
+arino.communication=ota
+arino.protocol=ttl
+arino.program.tool=arino
+arino.program.extra_params=
