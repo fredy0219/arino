@@ -1,5 +1,7 @@
 #!/bin/sh
 
+START=99
+
 # Source file
 service="/usr/arino/otaservice"
 
@@ -44,6 +46,9 @@ case "$1" in
     restart)
         $1
         ;;
+	boot)
+		start
+		;;
     *)
         echo "Usage: $0 {start|stop|restart}"
         exit 2
