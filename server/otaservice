@@ -1,0 +1,113 @@
+#!/usr/bin/env node
+
+var exec = require('child_process').exec;
+var m = require('mraa');
+var net = require('net');
+var crypto = require('crypto');
+var fs = require('fs');
+
+var reset = 18; // GPIO18 connect to reset pin
+var config = {
+	com_port: "/dev/ttyS1",
+	chip: "atmega328p",
+	baud_rate: 57600,
+	listen_port: 7689,
+};
+
+var cmdUpLoadHex = 'avrdude -p' + config.chip + ' -carduino -P "' + config.com_port + '" -b' + config.baud_rate + ' -D -Uflash:w:"{{hexfile}}":i';
+
+var resetPin = new m.Gpio(reset);
+resetPin.dir(m.DIR_OUT);
+resetPin.write(1);
+
+var Sleep = function(ms) {
+	var e = new Date().getTime() + ms;
+	while (new Date().getTime() <= e) ;
+};
+
+var AvrReset = function() {
+	resetPin.write(1);
+	Sleep(50);
+	resetPin.write(0);
+	Sleep(10);
+	resetPin.write(1);
+	Sleep(50);
+};
+
+uploadHexfile = function(file, ondata, callback) {
+	AvrReset();
+	
+	var child = exec(cmdUpLoadHex.replace("{{hexfile}}", file));
+	
+	child.stderr.on('data', function (data){
+		if (typeof ondata === "function")
+			ondata(data);
+		// console.log(data);
+		if (data.indexOf("not in sync") >= 0) {
+			AvrReset();
+			// console.log("Reset avr !");
+		}
+		
+	});
+
+	child.on('exit', function (code) {
+		if (typeof callback === "function") 
+			callback(child.stderr);
+		console.log('child process exited with code ' + code);
+	});
+}
+
+var tmpData;
+
+var server = net.createServer(function(socket) {
+	// console.log("New connect", socket.remoteAddress);
+	tmpData = "";
+	
+	socket.on('data', function (data) {
+		data = data.toString();
+		if (data.indexOf("\r\n")>=0) {
+			var checksum = tmpData.substring(4, 36);
+			var content = tmpData.substring(37);
+			var hash = crypto.createHash("md5").update(content).digest("hex");
+			if (checksum != hash) {
+				socket.write('ERR:Checksum error');
+				socket.end();
+				return;
+			}
+			content = new Buffer(content, "base64").toString();
+			fs.writeFile("hexfile.hex", content, function(err) {
+				if(err) {
+					try {
+						socket.write('ERR:' + err);
+						socket.end();
+					} catch(err) {
+						console.error("error:", err);
+					}
+					return;
+				}
+
+				socket.write("OKX:WRITE\n");
+				uploadHexfile("hexfile.hex", function(data) {
+					try {
+						socket.write(new Buffer(data));
+					} catch(err) {
+						console.error("error:", err);
+					}
+				}, function() {
+					try {
+						socket.end();
+					} catch(err) {
+						console.error("error:", err);
+					}
+				});
+			}); 
+		} else {
+			tmpData += data;
+		}
+	});
+	
+});
+
+server.listen(config.listen_port);
+
+console.log("TCP listen port", config.listen_port);

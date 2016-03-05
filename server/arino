@@ -1,0 +1,50 @@
+#!/bin/sh
+
+# Source file
+service="/usr/arino/otaservice"
+
+# Log file
+log="/dev/null"
+
+prog="arino"
+
+start() {
+    [ -f $service ] || exit 6
+	echo -n "Starting $prog: "
+    $service >> $log &
+    retval=$?
+    [ "$retval" -eq "0" ] && echo "Success"
+	[ "$retval" -eq "0" ] || echo "Error"
+	return $retval
+}
+
+stop()
+{
+	echo -n "Stopping $prog: "
+	pid=`ps | grep "node $service" | grep -v " grep " | awk '{print $1}'`
+	kill -9 $pid > /dev/null 2>&1
+	retval=$?
+	[ "$retval" -eq "0" ] && echo "Success"
+	[ "$retval" -eq "0" ] || echo "Error"
+	return $retval
+}
+
+restart() {
+    stop
+    start
+}
+
+case "$1" in
+    start)
+        $1
+        ;;
+    stop)
+        $1
+        ;;
+    restart)
+        $1
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 2
+esac
