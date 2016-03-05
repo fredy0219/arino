@@ -1,0 +1,24 @@
+menu.cpu=Processor
+menu.clock=Clock
+
+arduinoboards.name=Arduino Boards
+
+arduinoboards.build.core=arduino:arduino
+arduinoboards.build.board=AVR_BT
+arduinoboards.upload.tool=arino
+
+arduinoboards.menu.cpu.atmega328=ATmega328
+arduinoboards.menu.cpu.atmega328.upload.maximum_size=32256
+arduinoboards.menu.cpu.atmega328.build.mcu=atmega328
+arduinoboards.menu.cpu.atmega328.build.variant=standard
+
+arduinoboards.menu.cpu.atmega8=ATmega8
+arduinoboards.menu.cpu.atmega8.upload.maximum_size=8192
+arduinoboards.menu.cpu.atmega8.build.mcu=atmega8
+arduinoboards.menu.cpu.atmega8.build.variant=standard
+
+arduinoboards.menu.clock.clock8=8 MHz
+arduinoboards.menu.clock.clock8.build.f_cpu=8000000L
+
+arduinoboards.menu.clock.clock16=16 MHz
+arduinoboards.menu.clock.clock16.build.f_cpu=16000000L
