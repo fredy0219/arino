@@ -1,6 +1,13 @@
 # Arino
 Arduino OTA upload with linkit smart 7688 or raspberry pi
 
+# Index
+* [Hardware Setup](#hardware-setup)
+* [Install on micropc](#install-on-micropc)
+  * [Linkit Smart 7688](#linkit-smart-7688)
+  * Raspberry Pi (Coming soon !)
+* [Install on Arduino ide](#install-on-arduino-ide)
+
 ## Hardware Setup
 ![connect to Arduino Pro Mini 3.3V 8MHz](https://raw.githubusercontent.com/maxpromer/arino/master/circuit.png)
 
