@@ -1,15 +1,15 @@
 {
   "packages": [
     {
-	  "name": "arino",
+      "name": "arino",
       "maintainer": "IOXhop", 
       "help": {
         "online": "http://www.ioxhop.com/"
       }, 
       "websiteURL": "https://github.com/maxpromer/arino", 
       "platforms": [
-	    {
-          "name": "Arino OTA Upload",
+        {
+          "name": "AVR OTA Upload",
           "architecture": "avr",
           "version": "0.1",
           "category": "avr",
@@ -21,7 +21,8 @@
           "checksum": "SHA-256:d2ec7cd4708ce0e9cf0971c0ebff87c6c01cca8ba94f2c1b5cccbc92db6c0daa",
           "size": "3878",
           "boards": [
-            {"name": "Pro Mini 3.3V 8MHz"}
+            {"name": "ATmega326"},
+            {"name": "ATmega8"}
           ],
           "toolsDependencies": [
             {
@@ -32,15 +33,15 @@
             {
               "packager": "arino",
               "name": "arino",
-              "version": "v0.1"
+              "version": "0.1"
             }
           ]
         }
 	  ], 
       "tools": [
         {
+		  "name": "arino", 
           "version": "0.1", 
-          "name": "arino", 
           "systems": [
             {
               "url": "https://raw.githubusercontent.com/maxpromer/arino/master/arduino/stable-v0.1/arino-v0.1.tar.gz", 
