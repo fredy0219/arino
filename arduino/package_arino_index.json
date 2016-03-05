@@ -16,10 +16,10 @@
           "help": {
             "online": ""
           },
-          "url": "https://raw.githubusercontent.com/maxpromer/arino/master/arduino/stable-v0.1/avr-ota-v0.1.zip",
-          "archiveFileName": "avr-ota-v0.1.zip",
-          "checksum": "SHA-256:d2ec7cd4708ce0e9cf0971c0ebff87c6c01cca8ba94f2c1b5cccbc92db6c0daa",
-          "size": "3878",
+          "url": "https://raw.githubusercontent.com/maxpromer/arino/master/arduino/stable/arino-hardware-v0.1.zip",
+          "archiveFileName": "arino-hardware-v0.1.zip",
+          "checksum": "SHA-256:f1d6505ab9c91f4a9e1841049b7941ec8e6e9532b502c52d15c82dc01ae42fa5",
+          "size": "4560",
           "boards": [
             {"name": "ATmega326"},
             {"name": "ATmega8"}
@@ -44,10 +44,10 @@
           "version": "0.1", 
           "systems": [
             {
-              "url": "https://raw.githubusercontent.com/maxpromer/arino/master/arduino/stable-v0.1/arino-v0.1.tar.gz", 
+              "url": "https://raw.githubusercontent.com/maxpromer/arino/master/arduino/stable/arino-tools-v0.1.tar.gz", 
               "checksum": "SHA-256:1f791c4b479883902443b93083f8fdbb8526d1be2c1e84360da4415cb0c9ded0", 
               "host": "i686-mingw32", 
-              "archiveFileName": "arino-v0.1.tar.gz", 
+              "archiveFileName": "arino-tools-v0.1.tar.gz", 
               "size": "4627860"
             }
           ]
