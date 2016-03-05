@@ -1,6 +1,7 @@
 {
   "packages": [
     {
+	  "name": "arino",
       "maintainer": "IOXhop", 
       "help": {
         "online": "http://www.ioxhop.com/"
