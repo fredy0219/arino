@@ -9,7 +9,7 @@ var fs = require('fs');
 var reset = 18; // GPIO18 connect to reset pin
 var config = {
 	com_port: "/dev/ttyS1",
-	chip: "atmega328p",
+	chip: "atmega644p",
 	baud_rate: 57600,
 	listen_port: 7689,
 };
